@@ -1,9 +1,10 @@
 require 'formula'
 
-class Mal4s < Formula
+class Mal4s11 < Formula
 
   homepage 'https://github.com/secure411dotorg/mal4s/'
   url 'https://service.dissectcyber.com/mal4s/mal4s-1.1.0.tar.gz'
+  sha1 '6431784384b11deaf4448b7f94bbb6eb4877a66e'
 
   head url 'https://github.com/secure411dotorg/mal4s.git'
 
