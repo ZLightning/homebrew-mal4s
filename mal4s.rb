@@ -9,8 +9,9 @@ class Mal4s < Formula
   head 'https://github.com/secure411dotorg/mal4s.git'
 
   depends_on :automake
+  depends_on :autoconf
   depends_on :libtool
-  depends_on :x11 => :optional
+  depends_on :x11 if build.with? 'x'
   depends_on :freetype
   depends_on 'pkg-config' => :build
   depends_on 'glm' => :build
@@ -23,16 +24,11 @@ class Mal4s < Formula
   depends_on 'sdl2_mixer'
 
   def install
-    ENV.append "CXXFLAGS", "-I#{HOMEBREW_PREFIX}/include"
-    system "autoreconf -f -i"
-    if MacOS::X11.installed?
-        system "./configure", "--disable-dependency-tracking",
-                          "--prefix=#{prefix}"
-    else
-        system "./configure", "--disable-dependency-tracking",
-                          "--prefix=#{prefix}",
-                          "--without-x"
-    end
-    system "make install"
+    args = ["--disable-dependency-tracking",
+            "--prefix=#{prefix}"]
+    args << "--without-x" unless build.with? 'x'
+    system "autoreconf", "-f", "-i"
+    system "./configure", *args
+    system "make", "install"
   end
 end
