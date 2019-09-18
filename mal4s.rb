@@ -31,10 +31,13 @@ class Mal4s < Formula
   needs :cxx11
 
   def install
-    ENV.cxx11
+    # clang on Mt. Lion will try to build against libstdc++,
+    # despite -std=gnu++0x
+    ENV.libcxx
 
     args = ["--disable-dependency-tracking",
-            "--prefix=#{prefix}"]
+            "--prefix=#{prefix}",
+	    "--with-boost=#{Formula["boost"].opt_prefix}"]
     args << "--without-x" if build.without? "x11"
     system "autoreconf", "-f", "-i"
     system "./configure", *args
