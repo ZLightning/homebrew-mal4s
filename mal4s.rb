@@ -28,8 +28,6 @@ class Mal4s < Formula
   depends_on "freetype"
   depends_on :x11 => :optional
 
-  needs :cxx11
-
   def install
     # clang on Mt. Lion will try to build against libstdc++,
     # despite -std=gnu++0x
