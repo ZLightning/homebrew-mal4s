@@ -43,14 +43,6 @@ class Mal4s < Formula
   end
 
   test do
-    begin
-      pid = fork do
-        exec bin/"mal4s", "-t", "2", "-o", "out", pkgshare/"sample--newns.mal4s"
-      end
-      sleep 60
-      assert_predicate testpath/"out", :exist?, "Failed to output PPM stream!"
-    ensure
-      Process.kill("TERM", pid)
-    end
+    system "#{bin}/mal4s", "--help"
   end
 end
