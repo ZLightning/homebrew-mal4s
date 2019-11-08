@@ -2,7 +2,7 @@ class Mal4s < Formula
   desc "Malicious host finder based on gource"
   homepage "https://github.com/secure411dotorg/mal4s/"
   url "https://github.com/secure411dotorg/mal4s/archive/upstream-merge.zip"
-  sha256 "7849a43da60ea9a49acb10bc4706aef227c2f5393fa1a3ae48103689ea003ba5"
+  sha256 "c18dcccccea41dc45c500b9cec273809329a9cae04081656d93a74e2691e7bce"
   revision 7
 
   head "https://github.com/secure411dotorg/mal4s.git"
